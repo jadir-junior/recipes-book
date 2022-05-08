@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "recipes-book": "apps/recipes-book",
+    "recipes-book-e2e": "apps/recipes-book-e2e"
+  }
+}
