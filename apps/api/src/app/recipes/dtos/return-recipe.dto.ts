@@ -1,4 +1,4 @@
-export interface IRecipe {
+export class ReturnRecipeDto {
   id: string;
   title: string;
   ingredients: string;

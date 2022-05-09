@@ -1,5 +1,4 @@
-export interface IRecipe {
-  id: string;
+export class CreateRecipeDto {
   title: string;
   ingredients: string;
   tags?: string;
