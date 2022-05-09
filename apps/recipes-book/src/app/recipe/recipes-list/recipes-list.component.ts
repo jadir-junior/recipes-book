@@ -6,7 +6,18 @@ import { RecipesService } from '../../recipes.service';
 
 @Component({
   selector: 'rb-recipes-list',
-  template: ` <p>recipes-list works!</p> `,
+  template: `
+    <div class="card">
+      <p-dataView
+        #dv
+        [value]="recipes"
+        [paginator]="true"
+        [rows]="9"
+        filterBy="name"
+        layout="grid"
+      ></p-dataView>
+    </div>
+  `,
   styles: [],
 })
 export class RecipesListComponent implements OnInit, OnDestroy {
