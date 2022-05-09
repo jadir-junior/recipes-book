@@ -3,6 +3,7 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "data": "libs/data",
     "recipes-book": "apps/recipes-book",
     "recipes-book-e2e": "apps/recipes-book-e2e"
   }

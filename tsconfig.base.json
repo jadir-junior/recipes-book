@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rb/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@rb/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@rb/data": ["libs/data/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
