@@ -1,13 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { IRecipe } from '@rb/data';
-import { RecipesService } from '../../recipes.service';
+import { RecipesService } from '../services/recipes.service';
 
 @Component({
   selector: 'rb-recipes-list',
   template: `
-    <div class="card">
+    <div class="card" *ngIf="recipes$ | async as recipes">
       <p-dataView
         #dv
         [value]="recipes"
@@ -18,25 +16,10 @@ import { RecipesService } from '../../recipes.service';
       ></p-dataView>
     </div>
   `,
-  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecipesListComponent implements OnInit, OnDestroy {
-  recipes!: IRecipe[];
-  destroy$ = new Subject<void>();
+export class RecipesListComponent {
+  recipes$ = this.recipesService.recipes$;
 
   constructor(private recipesService: RecipesService) {}
-
-  ngOnInit(): void {
-    this.recipesService
-      .getRecipes()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((result) => {
-        this.recipes = result;
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 }
