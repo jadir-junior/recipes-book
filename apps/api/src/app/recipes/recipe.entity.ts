@@ -28,7 +28,7 @@ export class Recipe extends BaseEntity {
   cookingTime: number;
 
   @Column({ nullable: false, type: 'int' })
-  propTime: number;
+  prepTime: number;
 
   @Column({ type: 'varchar', length: 200 })
   steps: string;

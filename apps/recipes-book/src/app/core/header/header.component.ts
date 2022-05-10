@@ -22,7 +22,8 @@ import { Component } from '@angular/core';
           class="header-menu-item"
           routerLink="recipes/create"
           label="My favourites"
-        ></p-button>
+        >
+        </p-button>
         <p-button
           class="header-menu-item"
           routerLink="recipes/create"
