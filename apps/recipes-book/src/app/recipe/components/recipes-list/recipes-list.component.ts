@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { RecipesService } from '../services/recipes.service';
+import { RecipesService } from '../../services/recipes.service';
 
 @Component({
   selector: 'rb-recipes-list',
