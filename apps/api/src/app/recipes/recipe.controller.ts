@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
+import { CreateRecipeDto } from './dtos/create-recipe.dto';
 import { RecipeService } from './recipe.service';
 import { ReturnRecipeDto } from './dtos/return-recipe.dto';
 
@@ -8,7 +9,14 @@ export class RecipesController {
   constructor(private recipeService: RecipeService) {}
 
   @Get()
-  async findAll(): Promise<ReturnRecipeDto[]> {
-    return await this.recipeService.findAll();
+  findAll(): Promise<ReturnRecipeDto[]> {
+    return this.recipeService.findAll();
+  }
+
+  @Post()
+  async create(
+    @Body() createRecipeDto: CreateRecipeDto
+  ): Promise<ReturnRecipeDto> {
+    return this.recipeService.create(createRecipeDto);
   }
 }

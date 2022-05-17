@@ -4,7 +4,7 @@ export class CreateRecipeDto {
   tags?: string;
   imageUrl: string;
   cookingTime?: number;
-  propTime?: number;
+  prepTime?: number;
   steps?: string;
   rating: number;
 }
