@@ -1,4 +1,4 @@
-<div class="card" *ngIf="recipes$ | async as recipes">
+<div class="card" *ngIf="filteredRecipes$ | async as recipes">
   <div>{{ recipes.length }} Results</div>
   <p-dataView
     #dv
@@ -20,7 +20,7 @@
           <div class="recipe-grid-item-content">
             <img
               class="recipe-image"
-              src="assets/recipes/ + recipe.imageUrl"
+              [src]="'assets/recipes/' + recipe.imageUrl"
               [alt]="recipe.title"
             />
             <div class="recipe-name">{{ recipe.title }}</div>

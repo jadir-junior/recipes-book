@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { combineLatest, map } from 'rxjs';
 
+import { IRecipe } from '@rb/data';
 import { RecipesService } from '../../services/recipes.service';
 
 @Component({
@@ -9,7 +11,19 @@ import { RecipesService } from '../../services/recipes.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RecipesListComponent {
-  recipes$ = this.recipesService.recipes$;
+  filteredRecipes$ = combineLatest([
+    this.recipesService.recipes$,
+    this.recipesService.filterRecipesAction$,
+  ]).pipe(
+    map(([recipes, filter]: [IRecipe[], Partial<IRecipe>]) => {
+      return recipes.filter(
+        (recipe) =>
+          recipe.title
+            ?.toLowerCase()
+            .indexOf(filter?.title?.toLowerCase() ?? '') != -1
+      );
+    })
+  );
 
   constructor(private recipesService: RecipesService) {}
 }

@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Component } from '@angular/core';
+import { RecipesService } from '../../services/recipes.service';
 
 @Component({
   selector: 'rb-recipes-filter',
@@ -16,13 +17,16 @@ export class RecipesFilterComponent {
     cookingTime: [''],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private recipesService: RecipesService
+  ) {}
 
   clearFilter(): void {
-    console.log(this.recipeForm.value);
+    this.recipeForm.reset();
   }
 
   filterResults(): void {
-    this.recipeForm.reset();
+    this.recipesService.updateFilter(this.recipeForm.value);
   }
 }
